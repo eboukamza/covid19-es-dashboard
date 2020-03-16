@@ -7,7 +7,7 @@ import colors from '../styles/colors'
 const Footer = () => (
   <div className='menu-footer'>
     <div>
-      <a href='https://github.com/opencovid19-fr/dashboard'>
+      <a href='https://github.com/eboukamza/dashboard'>
         <GitHub style={{verticalAalign: 'middle'}} />
       </a>
     </div>

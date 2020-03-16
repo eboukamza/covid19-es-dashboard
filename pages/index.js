@@ -14,8 +14,8 @@ import ScreenPage from '../layouts/screen'
 import MobilePage from '../layouts/mobile'
 
 const defaultViewport = {
-  latitude: 46.9,
-  longitude: 1.7,
+  latitude: 40.431,
+  longitude: -3.8199,
   zoom: 5
 }
 
@@ -45,8 +45,8 @@ const MainPage = ({data, dates}) => {
     }
   }, [dates, date])
 
-  const getFranceReport = useCallback(() => {
-    const reports = data.filter((item => item.nom === 'France'))
+  const getCountryReport = useCallback(() => {
+    const reports = data.filter((item => item.code === 'ES'))
     return {
       ...reports.find(r => r.date === date),
       history: reports
@@ -54,7 +54,7 @@ const MainPage = ({data, dates}) => {
   }, [date, data])
 
   const getRegionsReport = useCallback(() => {
-    const regions = data.filter((item => item.code.includes('REG')))
+    const regions = data.filter((item => item.code.includes('ES.')))
     const byCode = groupBy(regions, 'code')
 
     return {
@@ -90,12 +90,12 @@ const MainPage = ({data, dates}) => {
   }, [isMobileDevice]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    const franceReport = getFranceReport()
+    const franceReport = getCountryReport()
     setFranceReport(franceReport)
 
     const regionsReport = getRegionsReport()
     setRegionsReport(regionsReport)
-  }, [date, getFranceReport, getRegionsReport])
+  }, [date, getCountryReport, getRegionsReport])
 
   useEffect(() => {
     const mobileWidth = theme.mobileDisplay.split('px')[0]
@@ -111,7 +111,7 @@ const MainPage = ({data, dates}) => {
   }, [])
 
   return (
-    <Page title='Tableau de bord de suivi de l’épidémie de coronavirus en France'>
+    <Page title='Mapa de seguimiento de la epidemia de coronavirus en España'>
       <div className='main-page-container'>
         {isMobileDevice ? (
           <MobilePage
@@ -158,7 +158,7 @@ MainPage.getInitialProps = async () => {
 
   return {
     data,
-    dates: uniq(data.filter(r => r.code === 'FRA').map(r => r.date)).sort()
+    dates: uniq(data.filter(r => r.code === 'ES').map(r => r.date)).sort()
   }
 }
 

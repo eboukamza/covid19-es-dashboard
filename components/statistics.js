@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 import Counter from './counter'
 
 const Statistics = ({report}) => {
-  const {casConfirmes, deces} = report || {}
+  const {cases, deaths} = report || {}
 
   return (
     <div className='stats'>
       <div className='counters'>
-        <Counter value={casConfirmes || '?'} label='cas confirmés' color='orange' />
-        <Counter value={deces || '?'} label='décès' color='red' />
+        <Counter value={cases === undefined ? '?': cases} label='Casos' color='orange' />
+        <Counter value={deaths === undefined ? '?': deaths} label='Fallecidos' color='red' />
       </div>
       <style jsx>{`
         .stats {

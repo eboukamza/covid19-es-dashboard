@@ -4,18 +4,18 @@ export const regionLayer = {
   id: 'region',
   type: 'circle',
   source: 'regions',
-  filter: ['>', 'casConfirmes', 0],
+  filter: ['>', 'cases', 0],
   paint: {
     'circle-opacity': 0.6,
     'circle-color': colors.orange,
     'circle-radius': [
       'interpolate',
       ['linear'],
-      ['number', ['get', 'casConfirmes']],
+      ['number', ['get', 'cases']],
       0,
       10,
-      1500,
-      100
+      1800,
+      50
     ]
   }
 }
@@ -24,9 +24,9 @@ export const regionCountLayer = {
   id: 'region-count',
   type: 'symbol',
   source: 'regions',
-  filter: ['>', 'casConfirmes', 0],
+  filter: ['>', 'cases', 0],
   layout: {
-    'text-field': '{casConfirmes}',
+    'text-field': '{cases}',
     'text-size': 16
   }
 }

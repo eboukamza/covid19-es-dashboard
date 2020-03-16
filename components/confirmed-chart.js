@@ -21,18 +21,18 @@ const options = {
 const formatData = data => {
   const datasets = []
 
-  if (data.some(h => h.casConfirmes)) {
+  if (data.some(h => h.cases)) {
     datasets.push({
-      label: 'Cas confirmés',
-      data: data.map(h => h.casConfirmes - (h.deces || 0)),
+      label: 'Número de casos',
+      data: data.map(h => h.cases - (h.deaths || 0)),
       backgroundColor: colors.orange
     })
   }
 
-  if (data.some(h => h.deces)) {
+  if (data.some(h => h.deaths)) {
     datasets.push({
-      label: 'Décès',
-      data: data.map(h => h.deces),
+      label: 'Fallecidos',
+      data: data.map(h => h.deaths),
       backgroundColor: colors.red
     })
   }

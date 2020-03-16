@@ -1,10 +1,10 @@
-# Tableau de bord de suivi de l'épidémie de nouveau coronavirus
+# Panel de seguimiento del coronavirus Covid-19 en España
 
-Cet outil contributif tente de proposer une vision [consolidée](https://github.com/opencovid19-fr/data) des données officielles disponibles.
+Esta herramienta es una adaptación del proyecto Francés [veille-coronavirus.fr](https://veille-coronavirus.fr/) al Español
 
-Pour contribuer, créez une Issue, ou déposez une Pull-request :)
+Siéntete libre de contribuir a este proyecto o al [proyecto original](https://github.com/opencovid19-fr/dashboard).
 
-## Outils utilisés
+## Tools
 
 * [Node.js](https://nodejs.org)
 * [React](https://reactjs.org)
@@ -12,7 +12,7 @@ Pour contribuer, créez une Issue, ou déposez une Pull-request :)
 * [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/)
 * [Chart.js](https://www.chartjs.org)
 
-## Pré-requis
+## Prerequisites
 
 * Node.js >= 10
 * yarn ou npm
@@ -23,23 +23,15 @@ Pour contribuer, créez une Issue, ou déposez une Pull-request :)
 yarn
 ```
 
-## Lancer (en mode développement)
+## Run in dev mode
 
 ```
 yarn dev
 ```
 
-## Générer le site statique
+## Static site generation
 
 ```
 yarn build && yarn export
-cat out/
 ```
 
-## Déployer en production
-
-La production est actuellement sur GitHub Pages. Vous devez disposer des droits suffisants sur de dépôt pour déployer.
-
-```
-yarn deploy
-```

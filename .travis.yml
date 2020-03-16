@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - 10
+script:
+  - yarn build && yarn export
+
+deploy:
+  - provider: pages
+    local_dir: out
+    skip_cleanup: true
+    keep-history: true
+    github_token: $GH_TOKEN
+    on:
+      branch: master
+      repo: eboukamza/dashboard
