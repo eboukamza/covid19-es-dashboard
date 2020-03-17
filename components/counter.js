@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import colors from '../styles/colors'
 
-const Counter = ({value, label, color}) => {
+const Counter = ({value, label, color, size}) => {
   return (
     <div className='counter'>
       <div className='value'>{value}</div>
@@ -20,7 +20,7 @@ const Counter = ({value, label, color}) => {
         }
 
         .value {
-          font-size: xx-large;
+          font-size: ${size};
           font-weight: bold;
         }
         `}</style>
