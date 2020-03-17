@@ -2,7 +2,7 @@
   "name": "covid19-dashboard",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:eboukamza/dashboard.git",
+  "repository": "git@github.com:eboukamza/covid19-es-dashboard.git",
   "private": true,
   "scripts": {
     "dev": "next",

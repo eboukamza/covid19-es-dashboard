@@ -1,6 +1,8 @@
-# Panel de seguimiento del coronavirus Covid-19 en España
+# Panel de seguimiento del coronavirus covid-19 en España
 
-Esta herramienta es una adaptación del proyecto Francés [veille-coronavirus.fr](https://veille-coronavirus.fr/) al Español
+Esta herramienta es una adaptación del proyecto francés [veille-coronavirus.fr](https://veille-coronavirus.fr/) al Español.
+
+Los datos utilizados están disponibles en este otro repositorio: [covid19-es-data](https://github.com/eboukamza/covid19-es-data).
 
 Siéntete libre de contribuir a este proyecto o al [proyecto original](https://github.com/opencovid19-fr/dashboard).
 

@@ -12,4 +12,4 @@ deploy:
     github_token: $GH_TOKEN
     on:
       branch: master
-      repo: eboukamza/dashboard
+      repo: eboukamza/covid19-es-dashboard
