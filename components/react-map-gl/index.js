@@ -7,7 +7,8 @@ import SumUp from './sumup'
 import {regionLayer, regionCountLayer} from './layers'
 
 const settings = {
-  maxZoom: 16
+  maxZoom: 8,
+  minZoom: 3
 }
 
 const Map = ({viewport, regions, onViewportChange}) => {
