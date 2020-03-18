@@ -35,6 +35,7 @@ const ScreenPage = ({date, franceReport, regionsReport, prev, next, viewport, se
           date={date}
           regions={regionsReport}
           onViewportChange={setViewport}
+          isMobile={false}
         />
       </div>
 

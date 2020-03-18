@@ -18,7 +18,9 @@ const VIEWS = {
       viewport={viewport}
       date={date}
       regions={regionsReport}
-      onViewportChange={setViewport} />
+      onViewportChange={setViewport}
+      isMobile={true}
+    />
   ),
   stats: ({date, franceReport}) => (
     <>

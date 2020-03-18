@@ -11,7 +11,7 @@ const settings = {
   minZoom: 3
 }
 
-const Map = ({viewport, regions, onViewportChange}) => {
+const Map = ({viewport, regions, onViewportChange, isMobile}) => {
   const [map, setMap] = useState()
   const [hovered, setHovered] = useState(null)
 
@@ -21,7 +21,7 @@ const Map = ({viewport, regions, onViewportChange}) => {
     }
   }, [])
 
-  const onHover = event => {
+  const setRegionInfo = event => {
     event.stopPropagation()
     const feature = event.features && event.features[0]
     const [longitude, latitude] = event.lngLat
@@ -38,6 +38,15 @@ const Map = ({viewport, regions, onViewportChange}) => {
     setHovered(hoverInfo)
   }
 
+  let onClick;
+  let onHover;
+
+  if (isMobile) {
+    onClick = setRegionInfo
+  } else {
+    onHover = setRegionInfo
+  }
+
   return (
     <div className='map-container'>
       <ReactMapGL
@@ -50,6 +59,7 @@ const Map = ({viewport, regions, onViewportChange}) => {
         {...settings}
         interactiveLayerIds={[regionLayer.id]}
         onViewportChange={onViewportChange}
+        onClick={onClick}
         onHover={onHover}
       >
 
@@ -87,7 +97,8 @@ Map.propTypes = {
   viewport: PropTypes.object.isRequired,
   date: PropTypes.string.isRequired,
   regions: PropTypes.object.isRequired,
-  onViewportChange: PropTypes.func.isRequired
+  onViewportChange: PropTypes.func.isRequired,
+  isMobile: PropTypes.bool.isRequired
 }
 
 export default Map
