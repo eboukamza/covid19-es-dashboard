@@ -14,8 +14,8 @@ export const regionLayer = {
       ['number', ['get', 'cases']],
       0,
       10,
-      1800,
-      50
+      6000,
+      60
     ]
   }
 }
@@ -27,6 +27,6 @@ export const regionCountLayer = {
   filter: ['>', 'cases', 0],
   layout: {
     'text-field': '{cases}',
-    'text-size': 16
+    'text-size': 14
   }
 }
