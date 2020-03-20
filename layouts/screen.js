@@ -10,17 +10,17 @@ import Footer from '../components/footer'
 
 import colors from '../styles/colors'
 
-const ScreenPage = ({date, franceReport, regionsReport, prev, next, viewport, setViewport}) => {
+const ScreenPage = ({date, countryReport, regionsReport, prev, next, viewport, setViewport}) => {
   return (
     <>
       <div className='menu'>
         <DateNav date={date} prev={prev} next={next} />
         <Scrollable date={date}>
           <>
-            <Statistics report={franceReport} />
+            <Statistics report={countryReport} date={date} />
 
-            {franceReport && franceReport.history && (
-              <ConfirmedChart data={franceReport.history.filter(r => date >= r.date)} height={200} />
+            {countryReport && countryReport.history && (
+              <ConfirmedChart data={countryReport.history.filter(r => date >= r.date)} height={200} />
             )}
 
             <Description />

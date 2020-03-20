@@ -22,7 +22,7 @@ const defaultViewport = {
 const MainPage = ({data, dates}) => {
   const [isMobileDevice, setIsMobileDevice] = useState(false)
   const [date, setDate] = useState(dates[dates.length - 1])
-  const [franceReport, setFranceReport] = useState({})
+  const [countryReport, setCountryReport] = useState({})
   const [regionsReport, setRegionsReport] = useState({})
   const [viewport, setViewport] = useState(defaultViewport)
 
@@ -90,8 +90,8 @@ const MainPage = ({data, dates}) => {
   }, [isMobileDevice]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    const franceReport = getCountryReport()
-    setFranceReport(franceReport)
+    const countryReport = getCountryReport()
+    setCountryReport(countryReport)
 
     const regionsReport = getRegionsReport()
     setRegionsReport(regionsReport)
@@ -116,7 +116,7 @@ const MainPage = ({data, dates}) => {
         {isMobileDevice ? (
           <MobilePage
             date={date}
-            franceReport={franceReport}
+            countryReport={countryReport}
             regionsReport={regionsReport}
             prev={dateIdx > 0 ? previousReport : null}
             next={dateIdx < dates.length - 1 ? nextReport : null}
@@ -126,7 +126,7 @@ const MainPage = ({data, dates}) => {
         ) : (
           <ScreenPage
             date={date}
-            franceReport={franceReport}
+            countryReport={countryReport}
             regionsReport={regionsReport}
             prev={dateIdx > 0 ? previousReport : null}
             next={dateIdx < dates.length - 1 ? nextReport : null}
