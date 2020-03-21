@@ -3,25 +3,32 @@ import PropTypes from 'prop-types'
 
 import ConfirmedChart from '../confirmed-chart'
 
-const RegionSumup = ({name, cases, deltaCases, history}) => (
-  <div className='sumup-container'>
-    <div className='title'>{name}</div>
-    <div>{cases} casos confirmados</div>
-    <div>  {deltaCases >= 0 ? '+' : ''}{deltaCases} ({((cases / (cases - deltaCases)) * 100 - 100).toFixed(2)}%) casos desde la última vez</div>
+const RegionSumup = ({name, cases, history}) => {
+  history = JSON.parse(history);
+  const previous = history.length > 1 ? history[history.length - 2] : undefined;
+  const deltaCases = previous ? cases - previous.cases : undefined;
 
-    <ConfirmedChart data={JSON.parse(history)} height={240} />
+  return (
+    <div className='sumup-container'>
+      <div className='title'>{name}</div>
+      <div>{cases} casos confirmados</div>
 
-    <style jsx>{`
-        .sumup-container {
-          font-size: larger;
-        }
+      <div>  {deltaCases ? `+${deltaCases} (${((cases / (cases - deltaCases)) * 100 - 100).toFixed(2)}%) nuevos casos`: ''} </div>
 
-        .title {
-          font-weight: bold;
-        }
-      `}</style>
-  </div>
-)
+      <ConfirmedChart data={history} height={240}/>
+
+      <style jsx>{`
+          .sumup-container {
+            font-size: larger;
+          }
+
+          .title {
+            font-weight: bold;
+          }
+        `}</style>
+    </div>
+  );
+}
 
 RegionSumup.propTypes = {
   name: PropTypes.string.isRequired,
