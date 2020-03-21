@@ -23,12 +23,19 @@ const formatData = data => {
 
   if (data.some(h => h.cases)) {
     datasets.push({
-      label: 'Número de casos',
-      data: data.map(h => h.cases - (h.deaths || 0)),
+      label: 'Casos vivos',
+      data: data.map(h => h.cases - (h.recovered || 0) - (h.deaths || 0)),
       backgroundColor: colors.orange
     })
   }
 
+  if (data.some(h => h.recovered)) {
+    datasets.push({
+      label: 'Curados',
+      data: data.map(h => h.recovered),
+      backgroundColor: colors.green
+    })
+  }
   if (data.some(h => h.deaths)) {
     datasets.push({
       label: 'Fallecidos',

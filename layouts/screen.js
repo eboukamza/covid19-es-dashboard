@@ -17,12 +17,8 @@ const ScreenPage = ({date, countryReport, regionsReport, prev, next, viewport, s
         <DateNav date={date} prev={prev} next={next} />
         <Scrollable date={date}>
           <>
-            <Statistics report={countryReport} date={date} />
-
-            {countryReport && countryReport.history && (
-              <ConfirmedChart data={countryReport.history.filter(r => date >= r.date)} height={200} />
-            )}
-
+            <Statistics report={countryReport} />
+            <ConfirmedChart data={countryReport} height={200} />
             <Description />
           </>
         </Scrollable>

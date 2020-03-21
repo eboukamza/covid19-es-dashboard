@@ -22,13 +22,10 @@ const VIEWS = {
       isMobile={true}
     />
   ),
-  stats: ({date, countryReport}) => (
+  stats: ({countryReport}) => (
     <>
       <Statistics report={countryReport} />
-
-      {countryReport && countryReport.history && (
-        <ConfirmedChart data={countryReport.history.filter(r => date >= r.date)} height={300} />
-      )}
+      <ConfirmedChart data={countryReport} height={300} />
     </>
   ),
   description: () => <Description />

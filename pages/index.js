@@ -22,7 +22,7 @@ const defaultViewport = {
 const MainPage = ({data, dates}) => {
   const [isMobileDevice, setIsMobileDevice] = useState(false)
   const [date, setDate] = useState(dates[dates.length - 1])
-  const [countryReport, setCountryReport] = useState({})
+  const [countryReport, setCountryReport] = useState([])
   const [regionsReport, setRegionsReport] = useState({})
   const [viewport, setViewport] = useState(defaultViewport)
 
@@ -46,11 +46,7 @@ const MainPage = ({data, dates}) => {
   }, [dates, date])
 
   const getCountryReport = useCallback(() => {
-    const reports = data.filter((item => item.code === 'ES'))
-    return {
-      ...reports.find(r => r.date === date),
-      history: reports
-    }
+    return data.filter((item => item.code === 'ES' && date >= item.date));
   }, [date, data])
 
   const getRegionsReport = useCallback(() => {
