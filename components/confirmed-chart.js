@@ -32,7 +32,7 @@ const formatData = data => {
   if (data.some(h => h.recovered)) {
     datasets.push({
       label: 'Curados',
-      data: data.map(h => h.recovered),
+      data: data.map(h => h.recovered || 0),
       backgroundColor: colors.green
     })
   }
