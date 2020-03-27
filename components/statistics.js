@@ -2,27 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Counter from './counter'
-
-const calculatePct = (current, previous) => {
-  if (!current || !previous) return;
-
-  return ((current / previous) * 100 - 100).toFixed(2)
-}
-
-const format = value => {
-  return new Intl.NumberFormat('es-ES').format(value);
-}
-
-const getActiveCases = ({cases, deaths, recovered}) =>
-  cases ? cases - (deaths || 0) - (recovered || 0) : undefined
+import { calculateActiveCases, calculatePct, format } from '../lib/utils';
 
 const Statistics = ({report}) => {
   const last = report[report.length - 1] || {}
   const previous = report.length > 1 ? report[report.length - 2] : {}
   const {cases, deaths} = last
 
-  const activeCases = getActiveCases(last)
-  const previousActiveCases = getActiveCases(previous)
+  const activeCases = calculateActiveCases(last)
+  const previousActiveCases = calculateActiveCases(previous)
 
   const deltaActiveCasesPct = calculatePct(activeCases, previousActiveCases)
   const pctLabel = deltaActiveCasesPct ? deltaActiveCasesPct > 0 ? `${deltaActiveCasesPct}` : deltaActiveCasesPct : ''
