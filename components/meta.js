@@ -15,24 +15,24 @@ const Meta = ({title, description}) => {
 
       {/* Search Engine */}
       <meta name='description' content={description} />
-      {/*<meta name='image' content='https://to-define/images/previews/default.png' />*/}
+      <meta name='image' content='https://www.mapa-coronavirus.es/images/previews/default.png' />
 
       {/* Schema.org for Google */}
       <meta itemProp='name' content={title} />
       <meta itemProp='description' content={description} />
-      {/*<meta itemProp='image' content='https://to-define/images/previews/default.png' />*/}
+      <meta itemProp='image' content='https://www.mapa-coronavirus.es/images/previews/default.png' />
 
 
       {/* Twitter */}
       <meta name='twitter:title' content={title} />
       <meta name='twitter:description' content={description} />
-     {/* <meta name='twitter:image:src' content='https://to-define/images/previews/default.png' />*/}
+     { <meta name='twitter:image:src' content='https://www.mapa-coronavirus.es/images/previews/default.png' />}
 
       {/* Open Graph general (Facebook, Pinterest & Google+) */}
       <meta name='og:title' content={title} />
       <meta name='og:description' content={description} />
-      {/*<meta name='og:image' content='https://to-define/images/previews/facebook.png' />*/}
-      {/*<meta name='og:url' content='https://to-define/' />*/}
+      <meta name='og:image' content='https://www.mapa-coronavirus.es/images/previews/default.png' />
+      {<meta name='og:url' content='https://www.mapa-coronavirus.es/' />}
       <meta name='og:site_name' content={title} />
       <meta name='og:locale' content='es_ES' />
       <meta name='og:type' content='website' />
