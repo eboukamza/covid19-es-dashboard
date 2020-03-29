@@ -2,7 +2,7 @@ import React, {useState, useCallback, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {groupBy, uniq, indexOf} from 'lodash'
 
-import {getData} from '../lib/api'
+import { getData, getLastUpdate } from '../lib/api'
 
 import centers from '../centers.json'
 
@@ -19,7 +19,7 @@ const defaultViewport = {
   zoom: 5
 }
 
-const MainPage = ({data, dates}) => {
+const MainPage = ({data, dates, lastUpdate}) => {
   const [isMobileDevice, setIsMobileDevice] = useState(false)
   const [date, setDate] = useState(dates[dates.length - 1])
   const [countryReport, setCountryReport] = useState([])
@@ -118,6 +118,7 @@ const MainPage = ({data, dates}) => {
             next={dateIdx < dates.length - 1 ? nextReport : null}
             setViewport={setViewport}
             viewport={viewport}
+            lastUpdate={lastUpdate}
           />
         ) : (
           <ScreenPage
@@ -128,6 +129,7 @@ const MainPage = ({data, dates}) => {
             next={dateIdx < dates.length - 1 ? nextReport : null}
             setViewport={setViewport}
             viewport={viewport}
+            lastUpdate={lastUpdate}
           />
         )}
 
@@ -146,15 +148,19 @@ const MainPage = ({data, dates}) => {
 
 MainPage.propTypes = {
   data: PropTypes.array.isRequired,
-  dates: PropTypes.array.isRequired
+  dates: PropTypes.array.isRequired,
+  lastUpdate: PropTypes.string.isRequired
 }
 
 MainPage.getInitialProps = async () => {
   const data = await getData()
+  const lastUpdate = await getLastUpdate()
+  console.log(lastUpdate)
 
   return {
     data,
-    dates: uniq(data.filter(r => r.code === 'ES').map(r => r.date)).sort()
+    dates: uniq(data.filter(r => r.code === 'ES').map(r => r.date)).sort(),
+    lastUpdate
   }
 }
 

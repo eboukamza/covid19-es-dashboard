@@ -4,20 +4,17 @@ import {ChevronLeft, ChevronRight} from 'react-feather'
 
 import theme from '../styles/theme'
 import colors from '../styles/colors'
+import { formatDate } from '../lib/utils';
 
-const formatDate = isoString => {
-  const date = new Date(isoString)
 
-  return date.toLocaleDateString()
-}
 
 const DateNav = ({date, prev, next}) => {
-  const formatedDate = formatDate(date)
+  const formattedDate = formatDate(date)
 
   return (
     <div className='menu-header'>
       <div className={`report-nav ${prev ? '' : 'disabled'}`} onClick={prev}><ChevronLeft /></div>
-      <h2>Datos del {formatedDate}</h2>
+      <h2>Datos del {formattedDate}</h2>
       <div className={`report-nav ${next ? '' : 'disabled'}`} onClick={next}><ChevronRight /></div>
 
       <style jsx>{`

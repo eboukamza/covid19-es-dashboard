@@ -28,7 +28,7 @@ const VIEWS = {
       <ConfirmedChart data={countryReport} height={300} />
     </>
   ),
-  description: () => <Description />
+  description: ({lastUpdate}) => <Description lastUpdate={lastUpdate} />
 }
 
 const MobilePage = props => {

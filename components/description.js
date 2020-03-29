@@ -1,6 +1,7 @@
 import React from 'react'
+import { formatDateTime } from '../lib/utils';
 
-const Description = React.memo(() => (
+const Description = React.memo(({lastUpdate}) => (
   <div className='description'>
     <p>
       El Ministerio de Sanidad publica de manera diaria un <a
@@ -15,6 +16,8 @@ const Description = React.memo(() => (
     <p>
       Esta herramienta es una adaptación del proyecto <a href="https://veille-coronavirus.fr/">veille-coronavirus.fr</a> al caso Español.
     </p>
+
+    <p><b>Actualizado el</b> {formatDateTime(lastUpdate)}</p>
 
     <style jsx>{`
       .description {

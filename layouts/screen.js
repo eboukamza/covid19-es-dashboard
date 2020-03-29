@@ -10,7 +10,7 @@ import Footer from '../components/footer'
 
 import colors from '../styles/colors'
 
-const ScreenPage = ({date, countryReport, regionsReport, prev, next, viewport, setViewport}) => {
+const ScreenPage = ({date, countryReport, regionsReport, prev, next, viewport, setViewport, lastUpdate}) => {
   return (
     <>
       <div className='menu'>
@@ -19,7 +19,7 @@ const ScreenPage = ({date, countryReport, regionsReport, prev, next, viewport, s
           <>
             <Statistics report={countryReport} />
             <ConfirmedChart data={countryReport} height={200} />
-            <Description />
+            <Description lastUpdate={lastUpdate} />
           </>
         </Scrollable>
         <Footer />
