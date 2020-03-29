@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Counter from './counter'
-import { calculateActiveCases, calculatePct, format } from '../lib/utils';
+import { calculateActiveCases, calculatePct, format, formatDelta } from '../lib/utils';
 
 const Statistics = ({report}) => {
   const last = report[report.length - 1] || {}
@@ -19,12 +19,10 @@ const Statistics = ({report}) => {
   const deltaCases = cases && previous.cases ? cases - previous.cases : undefined
   const deltaDeaths = deaths ? deaths - previous.deaths : undefined
 
-  console.log(deltaCases)
-
   return (
     <div className='stats'>
 
-      <Counter value={activeCases === undefined ? '?' : `${format(activeCases)} (+${format(pctLabel)}%)`}
+      <Counter value={activeCases === undefined ? '?' : `${format(activeCases)} (${formatDelta(pctLabel)}%)`}
                label='Casos no curados' color='orange' size='xx-large' delta={deltaActiveCases}/>
 
       <div className='counters'>

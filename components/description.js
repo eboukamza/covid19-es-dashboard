@@ -17,7 +17,7 @@ const Description = React.memo(({lastUpdate}) => (
       Esta herramienta es una adaptación del proyecto <a href="https://veille-coronavirus.fr/">veille-coronavirus.fr</a> al caso Español.
     </p>
 
-    <p><b>Actualizado el</b> {formatDateTime(lastUpdate)}</p>
+    <p><b>Actualizado el {formatDateTime(lastUpdate)}</b></p>
 
     <style jsx>{`
       .description {

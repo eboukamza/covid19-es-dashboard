@@ -2,16 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import colors from '../styles/colors'
+import { formatDelta } from '../lib/utils';
 
 const Counter = ({value, label, color, size, delta}) => {
-  const difference = (Number.isInteger(value) && Number.isInteger(previousValue) && value - previousValue !== 0) ? value - previousValue : null
 
   return (
     <div className='counter'>
       <div className='value'>{value}</div>
       {delta && (
         <div className='delta'>
-          ( {Math.sign(delta) === 1 ? '+' : ''}{delta} )
+          ( {formatDelta(delta)} )
         </div>
       )}
       <div>{label}</div>
