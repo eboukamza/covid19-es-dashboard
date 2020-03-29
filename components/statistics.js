@@ -13,24 +13,24 @@ const Statistics = ({report}) => {
   const previousActiveCases = calculateActiveCases(previous)
 
   const deltaActiveCasesPct = calculatePct(activeCases, previousActiveCases)
+  const deltaActiveCases = activeCases && previousActiveCases ? activeCases - previousActiveCases : undefined
   const pctLabel = deltaActiveCasesPct ? deltaActiveCasesPct > 0 ? `${deltaActiveCasesPct}` : deltaActiveCasesPct : ''
 
-  const deltaCases = cases && previous.cases ? `+${cases - previous.cases}` : '?'
-  const deltaDeaths = deaths ? `+${deaths - previous.deaths}` : '?'
+  const deltaCases = cases && previous.cases ? cases - previous.cases : undefined
+  const deltaDeaths = deaths ? deaths - previous.deaths : undefined
+
+  console.log(deltaCases)
 
   return (
     <div className='stats'>
 
       <Counter value={activeCases === undefined ? '?' : `${format(activeCases)} (+${format(pctLabel)}%)`}
-               label='Casos no curados' color='orange' size='xx-large'/>
+               label='Casos no curados' color='orange' size='xx-large' delta={deltaActiveCases}/>
 
       <div className='counters'>
 
-        <Counter value={cases === undefined ? '?' : format(cases)} label='Casos totales' color='orange' size='x-large'/>
-        <Counter value={deaths === undefined ? '?' : format(deaths)} label='Fallecidos' color='red' size='x-large'/>
-
-        <Counter value={deltaCases} label='nuevos casos' color='orange' size='x-large'/>
-        <Counter value={deltaDeaths} label='nuevos fallecidos' color='red' size='x-large'/>
+        <Counter value={cases === undefined ? '?' : format(cases)} label='Casos totales' delta={deltaCases} color='orange' size='x-large'/>
+        <Counter value={deaths === undefined ? '?' : format(deaths)} label='Fallecidos' delta={deltaDeaths} color='red' size='x-large'/>
 
       </div>
       <style jsx>{`

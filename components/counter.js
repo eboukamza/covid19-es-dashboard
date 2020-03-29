@@ -3,10 +3,17 @@ import PropTypes from 'prop-types'
 
 import colors from '../styles/colors'
 
-const Counter = ({value, label, color, size}) => {
+const Counter = ({value, label, color, size, delta}) => {
+  const difference = (Number.isInteger(value) && Number.isInteger(previousValue) && value - previousValue !== 0) ? value - previousValue : null
+
   return (
     <div className='counter'>
       <div className='value'>{value}</div>
+      {delta && (
+        <div className='delta'>
+          ( {Math.sign(delta) === 1 ? '+' : ''}{delta} )
+        </div>
+      )}
       <div>{label}</div>
 
       <style jsx>{`
@@ -17,6 +24,10 @@ const Counter = ({value, label, color, size}) => {
           text-align: center;
           margin: 1em 0;
           color: ${colors ? colors[color] : colors.almostBlack};
+        }
+
+        .delta {
+          font-style: italic;
         }
 
         .value {
